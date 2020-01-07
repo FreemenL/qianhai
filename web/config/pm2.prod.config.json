@@ -1,0 +1,20 @@
+{
+	"apps" : [{
+    "cwd": "./",
+    "kill_timeout": 10000,
+    "interpreter": "./node_modules/.bin/ts-node",
+    "interpreter_args":"-P config/tsconfig-for-webpack-config.json",
+		"name": "qianhai_prod",
+		"script": "./build/webpack.run.ts",
+    "watch": false,
+    "ignore_watch": ["node_modules"],
+		"out_file": "./logs/app.log",
+		"error_file": "./logs/err.log",
+		"log_date_format" : "YYYY-MM-DD HH:mm Z",
+		"combine_logs": true,
+		"listen_timeout": 10000,
+		"env": {
+			"NODE_ENV": "production"
+		}
+	}]
+}
