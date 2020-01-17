@@ -7,7 +7,6 @@ import { Provider } from 'react-redux';
 import { renderRoutes } from "react-router-config";
 import { loadableReady } from "@loadable/component";
 
-
 const App = () => {
   return(
     <Provider store={getClientStore()}>

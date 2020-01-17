@@ -5,7 +5,6 @@ import { connect } from 'react-redux';
 import { getHomeList } from './store/actions';
 import  WithStyle from '../../WithStyle';
 import styles from './style.less';
-
 // const { WeekPicker } = DatePicker;
 
 interface Props {

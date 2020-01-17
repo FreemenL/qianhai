@@ -15,7 +15,7 @@ app.set('port', 8888);
 
 app.use(express.static(path.resolve(process.cwd(),'dist')));
 
-app.use('/api', proxy('http://127.0.0.1:7001', {
+app.use('/api', proxy('http://47.105.184.50', {
   proxyReqPathResolver: function(req) {
     return '/api'+req.url
   }

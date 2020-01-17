@@ -18,9 +18,48 @@ module.exports = merge(baseConfig,{
   },
   module: {
     rules: [{
+      test: /\.(ts|tsx)$/,
+      use: [{
+        loader: 'awesome-typescript-loader',
+        options: {
+          useCache: true,
+          useBabel: true,
+          transpileOnly: true,
+          useTranspileModule: false,
+          sourceMap: true,
+          forceIsolatedModules: true,
+          babelCore: "@babel/core",
+          babelOptions: {
+            babelrc: false,
+            presets: ["@babel/preset-react", ["@babel/preset-env", {
+                  targets: {
+                    browsers: ["last 2 versions"]
+                  }
+                }
+              ]
+            ],
+            plugins: [
+              "@loadable/babel-plugin",
+              [
+                'import',
+                {
+                  libraryName: 'antd',
+                  libraryDirectory: 'es',
+                  style: 'css'
+                }
+              ]
+            ]
+          },
+          reportFiles: [
+            "src/**/*.{ts,tsx}",
+            "server/**/*.{ts,tsx}"
+          ],
+          configFileName: path.resolve(fs.realpathSync(process.cwd()),'tsconfig.json')
+      }}],
+      exclude: /node_modules/
+      },{
       test: /\.(le|c)ss$/,
       exclude:[ srcPath ],
-      include: [path.resolve(process.cwd(), "node_modules/antd")],
       use: [{
         loader:'style-loader',
       },{
@@ -44,7 +83,12 @@ module.exports = merge(baseConfig,{
           importLoaders: 1,
           localIdentName: '[path][name]__[local]--[hash:base64:5]'
         }
-      }, 'postcss-loader','less-loader'],
+      },'postcss-loader', {
+        loader: "less-loader",
+        options: {
+          javascriptEnabled: true
+        }
+      }],
       include: [appSrc]
     }]
   },

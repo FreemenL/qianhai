@@ -2016,3 +2016,9 @@
 2020-01-07 19:41 +08:00:     at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1106:14)
 2020-01-07 19:58 +08:00: Error: connect ECONNREFUSED 127.0.0.1:7001
 2020-01-07 19:58 +08:00:     at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1106:14)
+2020-01-16 20:48 +08:00: <s> [webpack.Progress] 0% compiling
+2020-01-16 20:48 +08:00: <s> [webpack.Progress] 10% building 0/0 modules 0 active 
+2020-01-16 20:48 +08:00: <s> [webpack.Progress] 0% compiling
+2020-01-16 20:48 +08:00: <s> [webpack.Progress] 10% building 0/0 modules 0 active 
+2020-01-16 20:48 +08:00: <s> [webpack.Progress] 10% building 0/1 modules 1 active /Users/jiayali/Desktop/wenzhang/qianhai/web/node_modules/_awesome-typescript-loader@5.2.1@awesome-typescript-loader/dist/entry.js??ref--4-0!/Users/jiayali/Desktop/wenzhang/qianhai/web/src/client/index.tsx
+2020-01-16 20:48 +08:00: <s> [webpack.Progress] 10% building 0/1 modules 1 active /Users/jiayali/Desktop/wenzhang/qianhai/web/node_modules/_awesome-typescript-loader@5.2.1@awesome-typescript-loader/dist/entry.js??ref--4-0!/Users/jiayali/Desktop/wenzhang/qianhai/web/src/client/index.tsx

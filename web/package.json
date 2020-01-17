@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "pm2 start config/pm2.prod.config.json && pm2 logs"
+    "start": "pm2 start config/pm2.prod.config.json && pm2 logs",
+    "dev": "ts-node -P config/tsconfig-for-webpack-config.json ./build/webpack.run.ts"
   },
   "author": "",
   "license": "ISC",

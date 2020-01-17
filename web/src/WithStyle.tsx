@@ -12,7 +12,13 @@ export default (DefaultComponent,styles,loadData?:any) => class WithStyle extend
   constructor(props){
     super(props)
     if(this.props.staticContext){
-      this.props.staticContext.css.push(styles._getCss())
+      if(Array.isArray(styles)){
+        styles.forEach((item)=>{
+          this.props.staticContext.css.push(item._getCss())
+        })
+      }else{
+        this.props.staticContext.css.push(styles._getCss())
+      }
     }
   }
   
