@@ -1,8 +1,7 @@
-import { Service } from 'egg';
+import BaseService from './baseService';
 import uniqBy = require('lodash.uniqby');
-import url = require('url');
 
-class NewsService extends Service {
+class NewsService extends BaseService {
   articleList: object;
   paramsIndex: number;
   dateString: string;
@@ -12,34 +11,8 @@ class NewsService extends Service {
     this.articleList = {};
     this.dateString = new Date().toLocaleDateString();
   }
-  // 获取掘金文章列表数据
-  async fetchData(index) {
-    const { jueJinConfig } = this.config;
-    const { data } = await this.ctx.curl(jueJinConfig.apiAddress.list, jueJinConfig.params.list(index));
-    return data;
-  }
-  // 发送钉钉消息
-  async fetchDingDing(params = {}) {
-    const { dingdingConfig } = this.config;
-    let data;
-    try {
-      const res = await this.ctx.curl(dingdingConfig.pushConfig.address, Object.assign(params, dingdingConfig.pushConfig.params));
-      data = res.data;
-    } catch (error) {
-      console.log('error', error);
-    }
-    return data;
-  }
-  async fetch(uri, params) {
-    const { data } = await this.ctx.curl(url.format(uri), params);
-    return data;
-  }
-  async getModelData(query) {
-    const { ctx } = this;
-    return await ctx.model.Articles.find(query);
-  }
   async list() {
-    const listData = await this.getModelData({ date: new RegExp(this.dateString) });
+    const listData = await this.getModelData('Articles', { date: new RegExp(this.dateString) });
     if (listData.length > 0) {
       const resultlist = uniqBy(listData, 'date');
       return resultlist;
@@ -48,7 +21,7 @@ class NewsService extends Service {
     let articles = await this.handleData();
     articles = articles.map(article => ({ ...article, postId: article.originalUrl.split('post/')[1] }));
     try {
-       await ctx.model.Articles.create({
+      await ctx.model.Articles.create({
         date: this.dateString,
         articles,
       });

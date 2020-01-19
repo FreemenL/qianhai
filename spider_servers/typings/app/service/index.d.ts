@@ -3,9 +3,13 @@
 
 import 'egg';
 import ExportArticles from '../../../app/service/articles';
+import ExportBaseService from '../../../app/service/baseService';
+import ExportTArticles from '../../../app/service/tArticles';
 
 declare module 'egg' {
   interface IService {
     articles: ExportArticles;
+    baseService: ExportBaseService;
+    tArticles: ExportTArticles;
   }
 }

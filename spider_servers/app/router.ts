@@ -11,5 +11,5 @@ export default (app: Application) => {
   const { controller, router } = app;
   router.get('/api/articles', controller.articles.index);
   router.get('/api/articles/:id', controller.articles.detail);
-
+  router.get('/api/articles/team/:id', controller.articles.tbArticles);
 };

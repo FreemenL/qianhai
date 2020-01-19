@@ -12,7 +12,8 @@ class UpdateCache extends Subscription {
   // subscribe 是真正定时任务执行时被运行的函数
   async subscribe() {
     const { service } = this.ctx;
-    service.articles.list();
+    const articleServiceArray = [ 'articles', 'tArticles' ];
+    articleServiceArray.forEach(_item => service[_item].list());
     service.articles.fetchDingDing();
   }
 }

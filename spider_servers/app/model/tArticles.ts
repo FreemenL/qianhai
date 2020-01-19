@@ -1,0 +1,17 @@
+module.exports = app => {
+  const mongoose = app.mongoose;
+  const Schema = mongoose.Schema;
+
+  const ArticleListSchema = new Schema({
+    date: { type: String, required: true },
+    articles: [{
+      id: { type: String, required: true },
+      originalUrl: { type: String, required: true },
+      pic: { type: String, required: true },
+      time: { type: String, required: true },
+      title: { type: String, required: true },
+      auther: { type: String, required: true },
+    }],
+  });
+  return mongoose.model('TArticles', ArticleListSchema);
+};

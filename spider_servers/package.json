@@ -22,7 +22,9 @@
     "clean": "ets clean"
   },
   "dependencies": {
+    "cheerio": "^1.0.0-rc.3",
     "egg": "^2.6.1",
+    "egg-mongoose": "^3.0.0",
     "egg-scripts": "^2.12.0",
     "lodash.uniqby": "^4.7.0"
   },

@@ -4,6 +4,10 @@ class ArticleController extends BaseController {
   async index() {
     await this.getPager('Articles', [ 'date' ]);
   }
+  async tbArticles(){
+    await this.getPager('TArticles', [ 'date' ]);
+  }
+  
   async detail() {
     const { ctx } = this;
     const id = ctx.params.id;

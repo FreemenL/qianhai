@@ -49,6 +49,13 @@ export default (appInfo: EggAppInfo) => {
       },
     },
   };
+  config.taobaoConfig = {
+    apiAddress: {
+      baseurl: 'https://fed.taobao.org',
+      list: 'https://fed.taobao.org/blogs/categories/Node.js?spm=taofed.blogs.category-list.2.4e275ac8ms8DK1&file=Node.js',
+    },
+  };
+
   config.jueJinConfig = {
     apiAddress: {
       list: 'https://web-api.juejin.im/query',
