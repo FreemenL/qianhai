@@ -2,7 +2,7 @@
 // Do not modify this file!!!!!!!!!
 
 import 'egg';
-import ExportInfoqArticles from '../../../app/model/Infoq_articles';
+import ExportInfoqArticles from '../../../app/model/InfoqArticles';
 import ExportArticles from '../../../app/model/articles';
 import ExportTArticles from '../../../app/model/tArticles';
 import ExportZhihuArticles from '../../../app/model/zhihuArticles';
