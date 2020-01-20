@@ -39,6 +39,17 @@ class ArticleController extends BaseController {
       this.error(error);
     }
   }
+  async geekbangArticles() {
+    await this.getPager('GeekbangArticles', [ 'date' ]);
+  }
+  async geekbangArticlesDetails() {
+    try {
+      const match = await this.ctx.service.geekbangArticles.detail();
+      this.success(match);
+    } catch (error) {
+      this.error(error);
+    }
+  }
   async detail() {
     const { ctx } = this;
     const id = ctx.params.id;
