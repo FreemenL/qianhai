@@ -1,24 +1,21 @@
 import React from 'react';
 import  WithStyle from './WithStyle';
+import  HeaderCompomnent from '@components/header/Header';
 import { renderRoutes } from "react-router-config";
 import styles from 'antd/dist/antd.less';
 import istyles from './index.less';
 import { Layout} from 'antd';
 
-const { Header, Content, Footer } = Layout;
+const { Content, Footer } = Layout;
 
 const App = (props)=> {
     return (
-        <Layout>
-        <Header className={istyles['header']}>
-          <div className={istyles['logo']}>
-            -q
-          </div>
-        </Header>
-        <Content>
+      <Layout className={istyles['layout']}>
+        <HeaderCompomnent/>
+        <Content className={istyles['content']}>
           {renderRoutes(props.route.routes)}
         </Content>
-        <Footer style={{ textAlign: 'center' }}> 前海 ©2020 Created by 学而思网校1对1前端团队</Footer>
+        <Footer className={istyles['footer']}> 学而思 网校1对1 前端技术团队出品 </Footer>
       </Layout>
     )
 }

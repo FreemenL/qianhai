@@ -89,7 +89,7 @@ queue.tapAsync("start building...", (tag, task, result, next) => {
 queue.callAsync("build", (task,result) => {
   if(!count){
     count++
-    spawn('nodemon', ['--watch', 'dist/**/*', './dist/node/server.js'], {
+    spawn('nodemon', ['--watch', 'dist/**/*', './dist/node/server.js' ,'--max-old-space-size=4092'], {
       // detached: true, //保证父进程结束，子进程仍然可以运行
       stdio: 'inherit',
       cwd: process.cwd()

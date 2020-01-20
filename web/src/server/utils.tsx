@@ -25,13 +25,13 @@ export const render = (store,routes,req,context)=>{
     ))  
 
     const helmet = Helmet.renderStatic();
-    const cssStr = context.css.length ? context.css.join('\n'):"";
-
+    let cssStr = context.css.length ? context.css.join('\n'):"";
+    cssStr+=`html{font-size:100px}`;
     return (`
       <html>
         <head>
-          <meta http-equiv="X-Frame-Options" content="deny">
           <meta name="referrer" content="never">
+          <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
           <link rel="stylesheet" href='https://b-gold-cdn.xitu.io/v3/static/css/0.ad3a7e230eceef907247.css'/>
           ${helmet.title.toString()}
           ${helmet.meta.toString()}

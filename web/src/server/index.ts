@@ -8,6 +8,7 @@ import { matchRoutes } from "react-router-config";
 import { render } from './utils';
 import { getStore } from '../store';
 import Routes from '../Routes';
+
 const app = express();
 var server = http.createServer(app)
 
@@ -15,7 +16,7 @@ app.set('port', 8888);
 
 app.use(express.static(path.resolve(process.cwd(),'dist')));
 
-app.use('/api', proxy('http://47.105.184.50', {
+app.use('/api', proxy('http://127.0.0.1:7001', {
   proxyReqPathResolver: function(req) {
     return '/api'+req.url
   }

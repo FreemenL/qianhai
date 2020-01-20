@@ -9,7 +9,8 @@ module.exports = {
     extensions: ['.js', 'jsx', '.ts', '.tsx'],
     alias: {
       '@src': srcPath,
-      '@components': `${srcPath}/components`
+      '@components': `${srcPath}/components`,
+      '@utils': `${srcPath}/utils`,
     }
   },
   module: {

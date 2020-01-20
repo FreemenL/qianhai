@@ -4,10 +4,20 @@ class ArticleController extends BaseController {
   async index() {
     await this.getPager('Articles', [ 'date' ]);
   }
-  async tbArticles(){
+  async tbArticles() {
     await this.getPager('TArticles', [ 'date' ]);
   }
-  async infoqArticles(){
+  async tbDetail() {
+    const { ctx } = this;
+    const url = ctx.params.url;
+    try {
+      const article = await ctx.service.articles.getTbDetail(url);
+      this.success(article);
+    } catch (error) {
+      this.error(error);
+    }
+  }
+  async infoqArticles() {
     await this.getPager('InfoqArticles', [ 'date' ]);
   }
   async infoqArticlesDetails(){
@@ -18,12 +28,12 @@ class ArticleController extends BaseController {
       this.error(error);
     }
   }
-  async zhihuArticles(){
+  async zhihuArticles() {
     await this.getPager('ZhihuArticles', [ 'date' ]);
   }
-  async zhihuArticlesDetails(){
+  async zhihuArticlesDetails() {
     try {
-      let match = await this.ctx.service.zhihuArticles.detail()
+      const match = await this.ctx.service.zhihuArticles.detail();
       this.success(match);
     } catch (error) {
       this.error(error);
