@@ -4,10 +4,12 @@
 import 'egg';
 import ExportArticles from '../../../app/controller/articles';
 import ExportBase from '../../../app/controller/base';
+import ExportWeather from '../../../app/controller/weather';
 
 declare module 'egg' {
   interface IController {
     articles: ExportArticles;
     base: ExportBase;
+    weather: ExportWeather;
   }
 }

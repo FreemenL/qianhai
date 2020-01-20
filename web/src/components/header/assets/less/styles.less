@@ -1,21 +1,47 @@
-.header {
-  height: 73px;
-  line-height: 73px;
-  background-color: #304156;
-  background-image: url('../images/sun.png');
-  background-position: center;
-  background-repeat: no-repeat;
-  font-size: 20px;
-  color:#ccc;
-  text-align: center;
-  .logo{
-    float:left;
-    width:60px;
-    height:60px;
+.header{
+  position: fixed;
+  z-index: 1;
+  width: 100%;
+  border-bottom: 1px solid #ccc;
+  .logo-text{
+    color: #f5535b;
+  }
+  .weather{
     position: absolute;
-    left:20px;
-    top:8px;
-    border-radius: 50%;
-    cursor: pointer;
+    right: 25%;
+    color:#000;
+    span{
+      margin-right:20px;
+    }
+    img {
+      width: 30px;
+      height: 30px;
+    }
+  }
+}
+
+.logo {
+  width: 120px;
+  height: 31px;
+  color: #000;
+  font-size: 20px;
+  line-height: 31px;
+  text-align: center;
+  background: rgba(255, 255, 255, 0.2);
+  margin: 16px 24px 16px 0;
+  float: left;
+  margin-left:22%;
+  .logo-pic{
+    width:.5rem;
+    height: .5rem;
+  }
+}
+
+@media (max-width:1024px){
+  .header{
+    padding-bottom: 20px!important;
+    .weather{
+      display: none;
+    }
   }
 }

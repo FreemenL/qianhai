@@ -1,5 +1,6 @@
 import BaseService from './baseService';
 import uniqBy = require('lodash.uniqby');
+import cheerio = require('cheerio');
 
 class NewsService extends BaseService {
   articleList: object;
@@ -29,6 +30,18 @@ class NewsService extends BaseService {
       console.log('error', error);
     }
     return articles;
+  }
+  async getTbDetail(url) {
+    const data = await this.fetch(decodeURIComponent(url), null);
+    const $ = cheerio.load(data.toString());
+    let styleString: string = '';
+    Array.from($('style')).forEach(item => {
+      styleString += `<style>${$(item).html()}</style>`;
+    });
+    return {
+      styleString,
+      content: $('.blog-render-container').html(),
+    };
   }
   async handleData() {
     const data = await this.fetchData(this.paramsIndex++);

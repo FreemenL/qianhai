@@ -1,5 +1,6 @@
 import React, { PureComponent } from 'react'
 import { connect } from 'react-redux';
+import { Spin } from 'antd';
 import { getDetails } from './store/actions';
 import WithStyle from '../../WithStyle';
 import styles from './style.less';
@@ -12,6 +13,7 @@ class DetailComponent extends PureComponent<any,any>{
   render() {
     const { content ,name ,screenshot} = this.props.data;
     return (
+      <Spin spinning={content?false:true} size="large">
       <section className="article-content">
         <div className={`${styles['detail-wrapper']}`}>
           {screenshot?<img src={screenshot} alt="screenshot"/>:null}
@@ -20,6 +22,7 @@ class DetailComponent extends PureComponent<any,any>{
         <div className={`${styles['detail-wrapper']}`} dangerouslySetInnerHTML={{ __html:content}} >
         </div>
       </section>
+      </Spin>
     )
   }
 }

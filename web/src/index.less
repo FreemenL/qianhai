@@ -1,14 +1,24 @@
-
-.header{
-  position: fixed;
-  z-index: 1;
-  width: 100%
+.layout{
+ background:#fff;
 }
-
-.logo {
-  width: 120px;
-  height: 31px;
-  background: rgba(255, 255, 255, 0.2);
-  margin: 16px 24px 16px 0;
-  float: left;
+.footer{
+  text-align: center;
+  width: 100%;
+  bottom:0;
+}
+.content{
+  margin-top:64px;
+  margin-bottom:64px;
+}
+:global{
+  .ant-layout-content{
+    background:#f0f2f5;
+    margin-bottom: 0px!important;
+  }
+  .article-content pre>code{
+    font-size: 12px!important;
+  }
+  .article-content table{
+    font-size: 12px!important;
+  }
 }
