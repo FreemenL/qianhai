@@ -96,6 +96,7 @@ export default (appInfo: EggAppInfo) => {
   config.infoqConfig = {
     apiAddress: {
       list: 'https://www.infoq.cn/public/v1/article/getList',
+      detail: 'https://www.infoq.cn/public/v1/article/getDetail'
     },
   };
   config.zhihuConfig = {

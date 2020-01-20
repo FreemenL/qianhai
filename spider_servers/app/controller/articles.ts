@@ -10,6 +10,14 @@ class ArticleController extends BaseController {
   async infoqArticles(){
     await this.getPager('InfoqArticles', [ 'date' ]);
   }
+  async infoqArticlesDetails(){
+    try {
+      let match = await this.ctx.service.infoqArticles.detail()
+      this.success(match);
+    } catch (error) {
+      this.error(error);
+    }
+  }
   async zhihuArticles(){
     await this.getPager('ZhihuArticles', [ 'date' ]);
   }
