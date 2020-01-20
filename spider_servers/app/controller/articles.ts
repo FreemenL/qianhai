@@ -7,7 +7,20 @@ class ArticleController extends BaseController {
   async tbArticles(){
     await this.getPager('TArticles', [ 'date' ]);
   }
-  
+  async infoqArticles(){
+    await this.getPager('InfoqArticles', [ 'date' ]);
+  }
+  async zhihuArticles(){
+    await this.getPager('ZhihuArticles', [ 'date' ]);
+  }
+  async zhihuArticlesDetails(){
+    try {
+      let match = await this.ctx.service.zhihuArticles.detail()
+      this.success(match);
+    } catch (error) {
+      this.error(error);
+    }
+  }
   async detail() {
     const { ctx } = this;
     const id = ctx.params.id;
