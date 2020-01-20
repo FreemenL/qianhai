@@ -20,12 +20,31 @@ class ArticleController extends BaseController {
   async infoqArticles() {
     await this.getPager('InfoqArticles', [ 'date' ]);
   }
+  async infoqArticlesDetails(){
+    try {
+      let match = await this.ctx.service.infoqArticles.detail()
+      this.success(match);
+    } catch (error) {
+      this.error(error);
+    }
+  }
   async zhihuArticles() {
     await this.getPager('ZhihuArticles', [ 'date' ]);
   }
   async zhihuArticlesDetails() {
     try {
       const match = await this.ctx.service.zhihuArticles.detail();
+      this.success(match);
+    } catch (error) {
+      this.error(error);
+    }
+  }
+  async geekbangArticles() {
+    await this.getPager('GeekbangArticles', [ 'date' ]);
+  }
+  async geekbangArticlesDetails() {
+    try {
+      const match = await this.ctx.service.geekbangArticles.detail();
       this.success(match);
     } catch (error) {
       this.error(error);

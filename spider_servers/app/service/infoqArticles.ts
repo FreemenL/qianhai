@@ -5,6 +5,7 @@ import uniqBy = require('lodash.uniqby');
 // 获取淘宝前端技术文章
 class InfoqArticlesService extends BaseService {
   dateString: string;
+  score: '';
   constructor(ctx) {
     super(ctx);
     this.dateString = new Date().toLocaleDateString();
@@ -36,10 +37,9 @@ class InfoqArticlesService extends BaseService {
       headers: {
         'origin': 'https://www.infoq.cn'
       },
-      data: {"type":1,"size":12,"id":33}
+      data: {"type":1,"size":10,"id":33, score: this.score}
     };
-    const {data}  = await this.fetch(this.config.infoqConfig.apiAddress.list, params);
-    // console.log('xxx------', data)
+    const {data = []}  = await this.fetch(this.config.infoqConfig.apiAddress.list, params);
     let res = data.map(item=>({
       aid: item.aid,
       title: item.article_sharetitle,
@@ -49,10 +49,24 @@ class InfoqArticlesService extends BaseService {
       comment_count: item.comment_count,
       views: item.views,
       publish_time: new Date(item.publish_time).toLocaleString(),
-      topic: item.topic
+      topic: item.topic,
+      uuid: item.uuid
     }))
-    // console.log('res', res)
+    this.score = (data[data.length - 1] || '').score || ''
     return res
+  }
+  async detail () {
+    let params = {
+      method: 'POST',
+      contentType: 'json',
+      dataType: 'json',
+      headers: {
+        'origin': 'https://www.infoq.cn'
+      },
+      data: {'uuid': this.ctx.params.id}
+    };
+    const {data}  = await this.fetch(this.config.infoqConfig.apiAddress.detail, params);
+    return data
   }
 }
 

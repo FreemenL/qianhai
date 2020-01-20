@@ -17,7 +17,8 @@ module.exports = app => {
         id: { type: String, required: true },
         name: { type: String, required: true },
         alias: { type: String, required: true }
-      }]
+      }],
+      uuid: { type: String, required: true },
     }],
   });
   return mongoose.model('InfoqArticles', InfoqArticleListSchema);

@@ -15,7 +15,9 @@ export default (app: Application) => {
   router.get('/api/articles/team/:id', controller.articles.tbArticles);
   router.get('/api/articles/team/taobao', controller.articles.tbArticles);
   router.get('/api/articles/team/infoq', controller.articles.infoqArticles);
-  // router.get('/api/articles/team/infoq/:id', controller.articles.infoqArticles);
+  router.get('/api/articles/team/infoq/:id', controller.articles.infoqArticlesDetails);
   router.get('/api/articles/team/zhihu', controller.articles.zhihuArticles);
   router.get('/api/articles/team/zhihu/:id', controller.articles.zhihuArticlesDetails);
+  router.get('/api/articles/team/geekbang', controller.articles.geekbangArticles);
+  router.get('/api/articles/team/geekbang/:id', controller.articles.geekbangArticlesDetails);
 };
