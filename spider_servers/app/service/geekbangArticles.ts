@@ -35,11 +35,12 @@ class GeekbangArticlesService extends BaseService {
       headers: {
         'origin': 'https://s.geekbang.org'
       },
-      data: {"q":"node.js","t":0,"s":10,"p":this.pageIndex}
+      data: {"q":"node.js","t":2,"s":10,"p":this.pageIndex}
     };
     const {data}  = await this.fetch(this.config.geekbangConfig.apiAddress.list, params);
     this.pageIndex ++
     let res = data.list.map(item=>{
+      let uuid = item.content_url.split('https://www.infoq.cn/article/')[1] || item.content_url.split('https://www.infoq.cn/articles/')[1]
       return {
       id: item.id,
       title: item.title,
@@ -47,7 +48,7 @@ class GeekbangArticlesService extends BaseService {
       author_name: item.author,
       publish_time: new Date(+item.release_time * 1000).toLocaleString(),
       sub_source: item.sub_source,
-      uuid: item.content_url.split('/')[item.content_url.split('/').length-1]
+      uuid: uuid
     }})
     return res
   }
