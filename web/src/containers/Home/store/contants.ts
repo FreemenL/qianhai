@@ -1,2 +1,3 @@
 export const CHANGE_LIST = 'HOME/CHANGE_LIST';
 export const CHANGE_TB_LIST = 'HOME/CHANGE_TB_LIST';
+export const CHANGE_GK_LIST = 'HOME/CHANGE_GK_LIST';

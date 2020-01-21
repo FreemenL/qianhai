@@ -12,6 +12,7 @@ interface Props {
   getHomeList: Function,
   history: any,
   weather: any,
+  gkList: any,
 }
 
 class Home extends PureComponent<Props, any> {
@@ -31,7 +32,7 @@ class Home extends PureComponent<Props, any> {
   }
 
   renderItem(){
-    return (item)=>(<li key={item.id} onClick={()=>this.jumpDetail(item.postId)}>
+    return (item)=>(<li key={item._id} onClick={()=>this.jumpDetail(item.postId)}>
         <p className={styles["list-title"]}> 
           <span>作者: {item.user.username}</span>  
           <span>发布时间: {item.createdAt.split('T')[0]}</span>    
@@ -43,7 +44,7 @@ class Home extends PureComponent<Props, any> {
   }
 
   renderTBItem(){
-    return (item)=>(<li key={item.id} onClick={()=>this.jumpTBDetail(item.originalUrl)}>
+    return (item)=>(<li key={item._id} onClick={()=>this.jumpTBDetail(item.originalUrl)}>
         <p className={styles["list-title"]}> 
           <span>作者: {item.auther}</span>  
           <span>发布时间: {item.time}</span>
@@ -53,15 +54,26 @@ class Home extends PureComponent<Props, any> {
     </li>)
   }
 
-  getList(){
-    const { list } = this.props;
-    return list.map(this.renderItem());
+  getList(property,itemName){
+    return this.props[property].map(this[itemName]());
+  }
+  
+  jumpGKDetail(uuid){
+    const { history } = this.props;
+    history.push({pathname:`/gkdetails/${uuid}`});
   }
 
-  getTBList() {
-    const { tbList } = this.props;
-    return tbList.map(this.renderTBItem());
+  renderGKItem() {
+    return (item)=>(<li key={item._id} onClick={()=>this.jumpGKDetail(item.uuid)}>
+        <p className={styles["list-title"]}> 
+          <span>作者: {item.author_name}</span>  
+          <span>发布时间: {item.publish_time}</span>
+          <span> 来源: InfoQ</span>         
+        </p>
+      <p className={styles["list-content"]} dangerouslySetInnerHTML={{ __html:item.title}}></p>
+    </li>)
   }
+
   // 跳转展示页面详情
   jumpDetail = (url) => { 
     const { history } = this.props;
@@ -100,8 +112,9 @@ class Home extends PureComponent<Props, any> {
             <Card title="最新推荐">
               <div className={styles['article-container']}>
                 <ul>
-                  { this.getList() }
-                  { this.getTBList() }
+                  { this.getList('list', 'renderItem') }
+                  { this.getList('tbList', 'renderTBItem') }
+                  { this.getList('gkList', 'renderGKItem') }
                 </ul>
               </div>
             </Card>
@@ -116,6 +129,7 @@ const mapStateToProps = (state) => ({
   name: state.home.name,
   list: state.home.newList,
   tbList: state.home.tbList,
+  gkList: state.home.gkList,
 })
 
 const mapDispatchToProps = (dispatch) => ({

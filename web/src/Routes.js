@@ -12,6 +12,11 @@ export default [
         component: loadable(() => import(/* webpackChunkName: "Home" */ "./containers/Home")),
         loadData: require("./containers/Home").default.loadData
       },{
+        key: "GKDetails",
+        path: "/gkdetails/:url",
+        exact: true,
+        component: loadable(() => import(/* webpackChunkName: "Details" */ "./containers/GKDetails")),
+      },{
         key: "TBDetails",
         path: "/tbdetails/:url",
         exact: true,
