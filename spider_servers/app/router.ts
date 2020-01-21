@@ -12,7 +12,7 @@ export default (app: Application) => {
   router.get('/api/articles', controller.articles.index);
   router.get('/api/articles/:id', controller.articles.detail);
   router.get('/api/articles/tb/:url', controller.articles.tbDetail);
-  router.get('/api/articles/team/:id', controller.articles.tbArticles);
+  // router.get('/api/articles/team/:id', controller.articles.tbArticles);
   router.get('/api/articles/team/taobao', controller.articles.tbArticles);
   router.get('/api/articles/team/infoq', controller.articles.infoqArticles);
   router.get('/api/articles/team/infoq/:id', controller.articles.infoqArticlesDetails);
