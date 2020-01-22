@@ -33,7 +33,9 @@ export default [
         component: loadable(() => import(/* webpackChunkName: "Login" */"./containers/Login")),
       },{
         path: "*",
-        component: loadable(() => import(/* webpackChunkName: "NotFound" */"./containers/NotFound")),
+        // component: loadable(() => import(/* webpackChunkName: "NotFound" */"./containers/NotFound")),
+        component: loadable(() => import(/* webpackChunkName: "Home" */ "./containers/Home")),
+        loadData: require("./containers/Home").default.loadData
       }
     ]
   }
